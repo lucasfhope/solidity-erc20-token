@@ -22,8 +22,6 @@ build:; forge build
 
 test :; forge test 
 
-test-zk :; foundryup-zksync && forge test --zksync && foundryup
-
 snapshot :; forge snapshot
 
 format :; forge fmt
@@ -37,14 +35,3 @@ deploy:
 deploy-sepolia:
 	@forge script script/DeployHopeToken.s.sol:DeployHopeToken --rpc-url $(SEPOLIA_RPC_URL) --account $(ACCOUNT) --sender $(SENDER) --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --verify
 
-# deploy-zk:
-# 	@forge script script/DeployOurToken.s.sol --rpc-url http://127.0.0.1:8011 --private-key $(DEFAULT_ZKSYNC_LOCAL_KEY) --legacy --zksync
-
-# deploy-zk-sepolia:
-# 	@forge script script/DeployOurToken.s.sol --rpc-url $(ZKSYNC_SEPOLIA_RPC_URL) --account $(ACCOUNT) --legacy --zksync
-
-# deploy-zk-bad:
-# 	@forge script script/DeployOurToken.s.sol --rpc-url https://sepolia.era.zksync.dev --private-key $(PRIVATE_KEY) --legacy --zksync
-
-# verify:
-# 	@forge verify-contract --chain-id 11155111 --num-of-optimizations 200 --watch --constructor-args 0x00000000000000000000000000000000000000000000d3c21bcecceda1000000 --etherscan-api-key $(ETHERSCAN_API_KEY) --compiler-version v0.8.19+commit.7dd6d404 0x089dc24123e0a27d44282a1ccc2fd815989e3300 src/OurToken.sol:OurToken

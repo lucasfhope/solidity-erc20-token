@@ -20,6 +20,10 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Foundryup
+        run: |
+          foundryup
+
       - name: Install Foundry and other dependencies
         run: |
           make install
