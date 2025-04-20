@@ -1,6 +1,6 @@
 -include .env
 
-.PHONY: all test test-zk clean deploy fund help install snapshot format anvil install deploy deploy-zk deploy-zk-sepolia deploy-sepolia verify
+.PHONY: all test clean deploy install snapshot format anvil deploy--sepolia deploy-sepolia
 
 DEFAULT_ANVIL_KEY := 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 
@@ -29,7 +29,6 @@ anvil :; anvil -m 'test test test test test test test test test test test junk' 
 
 deploy:
 	@forge script script/DeployHopeToken.s.sol:DeployHopeToken --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
-
 
 deploy-sepolia:
 	@forge script script/DeployHopeToken.s.sol:DeployHopeToken --rpc-url $(SEPOLIA_RPC_URL) --account $(ACCOUNT) --sender $(SENDER) --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --verify
